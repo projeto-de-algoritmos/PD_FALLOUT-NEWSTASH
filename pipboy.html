@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./Scripts/knapsack.js" defer></script>
+    <script src="./Scripts/quicksort.js" defer></script>
+    <script src="./Scripts/mergesort.js" defer></script>
+    <script src="./Scripts/item.js" defer></script>
+    <script src="./Scripts/lista.js" defer></script>
+    <script src="./Scripts/buttons.js" defer></script>
+    <title>Pip-Boy Page</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./Stylesheet/pipboy_style.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Stylesheet/imgs/iconfallout.png"
+    />
+  </head>
+  <body>
+    <div class="pipboy">  
+      <a href="index.html">
+        <div class="logo">Fallout Stash</div>
+      </a>
+
+      <div class="filters">
+        <form id="filter-form" style="display: none">
+          <label for="orderType">Ordenação por</label>
+          <select name="orderType" id="orderType">
+            <option value="caps">Caps</option>
+            <option value="nome">Nome</option>
+            <option value="peso">Peso</option>
+          </select>
+          <label for="orderBy" id="orderBy">em ordem</label>
+          <select name="orderBy" id="orderBy-select">
+            <option value="crescente">Crescente</option>
+            <option value="descrescente">Descrescente</option>
+          </select>
+          <input
+            type="submit"
+            class="button"
+            id="submit-button"
+            value="Ordenar"
+          />
+        </form>
+      </div>
+      <div class="screen">
+        <!-- Conteúdo da tela do Pip-Boy aqui -->
+        <div>
+          <p id="resposta-knapsack"></p>
+          <ul class="itemList" id="selectedItemList"></ul>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="button" id="knapsack-button" onclick="optimizeBag()">
+          Knapsack
+        </button>
+        <button class="button" id="inventario-button">Inventário</button>
+      </div>
+    </div>
+  </body>
+</html>
