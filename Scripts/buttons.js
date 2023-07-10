@@ -4,6 +4,7 @@ const knapsackAnswer = document.querySelector("#resposta-knapsack");
 const knapsackItems = document.querySelector("#selectedItemList");
 const itensSelecionados = [];
 let itensTexto = "";
+let result = "";
 
 //utitliza o Knapsack para devolver os elementos de maior valor que preencham a mochila ao clicar no botão "knapsack"
 const optimizeBag = () => {
@@ -17,29 +18,24 @@ const optimizeBag = () => {
 
   const itensSelecionadosOrdenados = quicksort(itensSelecionados);
 
-  knapsackPromise(
-    itensSelecionadosOrdenados.length - 1,
-    300,
-    itensSelecionadosOrdenados,
-    0
-  ).then((result) => {
-    result.itens_selecionados.forEach((item) => {
-      itensTexto += `<li>${item.nome} <br> <img src="./Stylesheet/imgs/weight.png" width = "20px"> ${item.peso} <br> <img src="./Stylesheet/imgs/caps-removebg-preview.png" width = "20px"> ${item.valor} </li>`;
-    });
+  result = knapsackPD(300, itensSelecionados);
 
-    let resultTexto = "";
-
-    if (result.capacidade === 300) {
-      resultTexto = `Você não selecionou nenhum item :( <br> Clique em inventário e selecione os itens que deseja levar!`;
-    } else {
-      resultTexto = `Dos itens selecionados, os mais valiosos que consegue levar custam, ao todo, ${result.valor_total} caps e sobrou ${result.capacidade} de capacidade. <br> Seguem os itens listados abaixo`;
-    }
-
-    knapsackAnswer.innerHTML = resultTexto;
-    knapsackItems.innerHTML = itensTexto;
-    knapsackButton.setAttribute("disabled", "true");
-    filterForm.setAttribute("style", "display: show");
+  result.itensSelecionados.forEach((item) => {
+    itensTexto += `<li>${item.nome} <br> <img src="./Stylesheet/imgs/weight.png" width = "20px"> ${item.peso} <br> <img src="./Stylesheet/imgs/caps-removebg-preview.png" width = "20px"> ${item.valor} </li>`;
   });
+
+  let resultTexto = "";
+
+  if (result.capacidade === 300) {
+    resultTexto = `Você não selecionou nenhum item :( <br> Clique em inventário e selecione os itens que deseja levar!`;
+  } else {
+    resultTexto = `Dos itens selecionados, os mais valiosos que consegue levar custam, ao todo, ${result.valor_total} caps e sobrou ${result.capacidade} de capacidade. <br> Seguem os itens listados abaixo`;
+  }
+
+  knapsackAnswer.innerHTML = resultTexto;
+  knapsackItems.innerHTML = itensTexto;
+  knapsackButton.setAttribute("disabled", "true");
+  filterForm.setAttribute("style", "display: show");
 };
 
 //adiciona classe "active" nos elementos da lista
@@ -75,12 +71,12 @@ filterForm.addEventListener("submit", (event) => {
     case "caps":
       if (dropdownOrderBy.value === "crescente") {
         filteredItems.length = 0;
-        mergeSortCapsUp(itensSelecionados).forEach((item) => {
+        mergeSortCapsUp(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       } else {
         filteredItems.length = 0;
-        mergeSortCapsDown(itensSelecionados).forEach((item) => {
+        mergeSortCapsDown(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       }
@@ -89,12 +85,12 @@ filterForm.addEventListener("submit", (event) => {
     case "nome":
       if (dropdownOrderBy.value === "crescente") {
         filteredItems.length = 0;
-        mergeSortNomeUp(itensSelecionados).forEach((item) => {
+        mergeSortNomeUp(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       } else {
         filteredItems.length = 0;
-        mergeSortNomeDown(itensSelecionados).forEach((item) => {
+        mergeSortNomeDown(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       }
@@ -103,12 +99,12 @@ filterForm.addEventListener("submit", (event) => {
     case "peso":
       if (dropdownOrderBy.value === "crescente") {
         filteredItems.length = 0;
-        mergeSortPesoUp(itensSelecionados).forEach((item) => {
+        mergeSortPesoUp(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       } else {
         filteredItems.length = 0;
-        mergeSortPesoDown(itensSelecionados).forEach((item) => {
+        mergeSortPesoDown(result.itensSelecionados).forEach((item) => {
           filteredItems.push(item);
         });
       }

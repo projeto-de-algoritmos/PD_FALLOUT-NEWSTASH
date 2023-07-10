@@ -6,10 +6,14 @@ class Item {
   }
 }
 
-function knapsack(capacidade, itens) {
+function knapsackPD(capacidade, itens) {
   const n = itens.length;
-  const dp = new Array(n + 1).fill(null).map(() => new Array(capacidade + 1).fill(0));
-  const selecionados = new Array(n + 1).fill(null).map(() => new Array(capacidade + 1).fill(false));
+  const dp = new Array(n + 1)
+    .fill(null)
+    .map(() => new Array(capacidade + 1).fill(0));
+  const selecionados = new Array(n + 1)
+    .fill(null)
+    .map(() => new Array(capacidade + 1).fill(false));
 
   for (let i = 1; i <= n; i++) {
     const item = itens[i - 1];
@@ -37,9 +41,9 @@ function knapsack(capacidade, itens) {
   }
 
   return {
-    valorTotal: dp[n][capacidade],
+    valor_total: dp[n][capacidade],
     itensSelecionados: itensSelecionados.reverse(),
-    capacidadeRestante: pesoAtual
+    capacidade: pesoAtual,
   };
 }
 
@@ -84,12 +88,12 @@ const itens = [
   new Item("Bottlecap Mine", 10, 100),
   new Item("Fusion Core", 10, 500),
   new Item("XCell", 10, 100),
-  new Item("Yao Guai Roast", 10, 80)
+  new Item("Yao Guai Roast", 10, 80),
 ];
 
 const capacidadeMochila = 300;
 
-const resultado = knapsack(capacidadeMochila, itens);
+const resultado = knapsackPD(capacidadeMochila, itens);
 
 console.log("Valor Total: ", resultado.valorTotal);
 console.log("Itens Selecionados: ", resultado.itensSelecionados);
