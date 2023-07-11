@@ -22,6 +22,3 @@ Nosso projeto tem como objetivo utilizar o algoritmo knapsack com programação 
 
 ## Uso 
 Para utilizar nosso projeto, basta abrir a github pages. Na tela inicial temos um texto para ambientar o usuário e um botão "Caps aqui" para abrir a tela do knapsack. Nela, basta selecionar os itens que quer que o algoritmo considere e clicar em "Knapsack", ele vai devolver a melhor otimização que preencha sua mochila de maneira a carregar os itens mais valiosos. Para selecionar outros itens, basta clicar em Inventário. Após o preenchimento da mochila, vai aparecer uma opção para ordená-la. Basta selecionar a ordenação por caps, nome ou peso tanto crescente quanto descrescente e clicar em filtrar.
-
-## [Entrega](./entrega.md)
-
