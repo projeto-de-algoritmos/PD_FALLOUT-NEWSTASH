@@ -1,7 +1,7 @@
 # Fallout Stash
 
 **Número da Lista**: 9<br>
-**Conteúdo da Disciplina**: D&C<br>
+**Conteúdo da Disciplina**: PD<br>
 
 ## Alunos
 |Matrícula | Aluno |
@@ -10,7 +10,7 @@
 | 19/0093480  |  Matheus Soares Arruda |
 
 ## Sobre 
-Nosso projeto tem como objetivo utilizar o algoritmo knapsack para devolver os itens que melhor preenchem uma mochila de modo a maximizar o valor levado. Após selecionar os itens, também é possível filtrar a mochila retornada em ordem de peso, nome e valor, tanto crescente quanto decrescente, utilizando um algoritmo de dividir e conquistar
+Nosso projeto tem como objetivo utilizar o algoritmo knapsack com programação dinâmica para devolver os itens que melhor preenchem uma mochila de modo a maximizar o valor levado. Após selecionar os itens, também é possível filtrar a mochila retornada em ordem de peso, nome e valor, tanto crescente quanto decrescente, utilizando um algoritmo de dividir e conquistar
 
 ## Screenshots
 ![](./Stylesheet/imgs/Screenshot%20from%202023-05-30%2017-47-31.png)
